@@ -112,6 +112,16 @@ angular.module( 'ozpWebtop.ozpToolbar')
       }
 
     };
+    
+    $scope.dismissAllNotifications = function() {
+      for(var b in $scope.messages) {
+        var message = $scope.messages[b];
+        models.dismissNotification(message);
+        $scope.messages.splice(b,1);
+      }
+      $scope.thereAreUnexpiredNotifications = false;
+    };
+    
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //                           initialization
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

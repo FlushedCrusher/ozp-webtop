@@ -30,7 +30,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip="{{notificationTooltip}}" tooltip-placement="bottom" tooltip-popup-delay="{{toolTipDelay}}" dropdown-toggle>
             <i class="icon-bell-filled-blue"></i>
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu alert-menu">
+            <li>
+              <button type="button" class="pull-right" ng-click="dismissAllNotifications()" alt="Dismiss All Notifications">
+              </button>
+            </li>
             <li class="UserNotification" ng-repeat="message in messages">
               <div>
                 <button type="button" class="close pull-right" ng-click="dismissNotification(message)" alt="Dismiss Notification">

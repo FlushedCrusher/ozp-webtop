@@ -717,6 +717,23 @@ body > div.classBanner:last-of-type {
   overflow-y: auto;
 }
 
+.user-alert-button-right {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  cursor: pointer;
+}
+
+.user-alert-button-right:hover,
+.user-alert-button-right:focus {
+  color: #009dd3;
+}
+
+.alert-menu {
+  max-height: 300px;
+  overflow: auto;
+}
+
 .UserNotification {
   padding: 7px;
 }

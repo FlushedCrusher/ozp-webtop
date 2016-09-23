@@ -177,8 +177,14 @@ angular.module( 'ozpWebtop', [
       // Get the notifications on load.
       // TODO when there is a way to communicate changes from the server to the
       //      application show notification updates live
-      ozpInterface.getNotifications().then(function(notifications) {
-        $rootScope.$broadcast(notificationReceivedEvent, notifications);
-      });
+      
+      function pollNotifications() {
+        ozpInterface.getNotifications().then(function(notifications) {
+          $rootScope.$broadcast(notificationReceivedEvent, notifications);
+        });
+      }
+      pollNotifications();
+      setInterval(pollNotifications, 15000);
+      
     });
 });

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+<link rel="stylesheet" href="ozpwebtop-1.1.6.css">
+</head>
+<body>
+  <ul class="dropdown-menu alert-menu">
+    <li>
+      <button type="button" class="pull-right" ng-click="dismissAllNotifications()" alt="Dismiss All Notifications">
+      </button>
+    </li>
+    <li class="UserNotification" >
+      <div>
+        <button type="button" class="close pull-right" ng-click="dismissNotification(message)" alt="Dismiss Notification">
+          <i class="icon-cross-16-white"></i>
+        </button>
+        <h5 class="created-by">AppsMall</h5>
+        <p class="message small">{{"This is a message"}}</p>
+        <div class="created-at">
+          <span class="Time" style="font-style: italic">{{1475169101000 | dcgsnDate}}</span>
+        </div>
+      </div>
+      <!-- don't show last divider -->
+      <div class="divider"></div>
+    </li>
+  </ul>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="app.js"></script>
+</html>

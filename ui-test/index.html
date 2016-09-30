@@ -3,28 +3,43 @@
 <head>
 <link rel="stylesheet" href="ozpwebtop-1.1.6.css">
 </head>
-<body>
-  <ul class="dropdown-menu alert-menu">
-    <li>
-      <button type="button" class="pull-right" ng-click="dismissAllNotifications()" alt="Dismiss All Notifications">
-      </button>
-    </li>
-    <li class="UserNotification" >
-      <div>
-        <button type="button" class="close pull-right" ng-click="dismissNotification(message)" alt="Dismiss Notification">
-          <i class="icon-cross-16-white"></i>
-        </button>
-        <h5 class="created-by">AppsMall</h5>
-        <p class="message small">{{"This is a message"}}</p>
-        <div class="created-at">
-          <span class="Time" style="font-style: italic">{{1475169101000 | dcgsnDate}}</span>
-        </div>
+<body ng-controller="ctrl">
+  <div class="navbar-right">
+    <div class="fixed-first-item">
+    <div class="user-alert-button-left">
+      Alerts
       </div>
-      <!-- don't show last divider -->
-      <div class="divider"></div>
-    </li>
-  </ul>
+      <div class="user-alert-button-right" ng-click="dismissAllNotifications()" alt="Dismiss All Notifications" role="button" tabindex="0">
+      Dismiss All
+      </div>
+    </div>
+    <ul class="dropdown-menu alert-menu">
+      <li class="UserNotification" ng-repeat="message in messages">
+        <div>
+          <button type="button" class="close pull-right" ng-click="dismissNotification(message)" alt="Dismiss Notification">
+            <i class="icon-cross-16-white"></i>
+          </button>
+          <h5 class="created-by">{{message.title}}</h5>
+          <p class="message small">
+            {{"Source: " + message.alertsource + " || Intellex Test Harness ||"}}
+            <span class="Time" style="font-style: italic">{{"Moment.js Imp"}}</span>
+          </p>
+          <div class="alert-footer">
+            <div class="alert-controls">
+            <a href="">Fly To Object</a><a href="">Fly To Alert Source</a><a href="">Details</a>
+            </div>
+            <div class="created-at">
+              <span class="Time" style="font-style: italic">{{message.alertDtg | dcgsnDate}}</span>
+            </div>
+          </div>
+        </div>
+        <!-- don't show last divider -->
+        <div class="divider"></div>
+      </li>
+    </ul>
+  </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="app.js"></script>
+<script src="controller.js"></script>
 </html>

@@ -9740,6 +9740,7 @@ body>div.classBanner:last-of-type {
   }
 }
 .fixed-first-item {
+  background-color: #009dd3;
   position: fixed;
   right: 0;
   top: 0;
@@ -9747,10 +9748,14 @@ body>div.classBanner:last-of-type {
   width: 320px;
 }
 .user-alert-button-left {
+  line-height: 20px;
+  font-size: 20px;
+  font-weight: bold;
   margin-left: 10px;
 }
 .user-alert-button-right {
   position: absolute;
+  line-height: 20px;
   top: 0;
   right: 5px;
   cursor: pointer;

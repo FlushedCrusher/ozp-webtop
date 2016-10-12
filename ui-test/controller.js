@@ -8,7 +8,7 @@ angular.module('app')
         "alertsource" : "S2A Test Harness",
         "classification" : "Classification of Rule",
         "created" : "2015-12-08T01:27:38.846+0000",
-        "alertDtg" : "2015-12-08T01:27:38.846+0000",
+        "alertDtg" : "2016-10-03T11:43:00.00+0000",
         "createdDate" : "2015-12-08T01:27:39.004+0000",
         "details" : "[{\"ShipName|key\":\"id\",\"value\":\"USS Neversail\"},{\"ShipName|key\":\"store\",\"value\":\"store information\"},{\"ShipName|key\":\"sma\",\"value\":\"0.0\"},{\"MMSI|key\":\"id\",\"value\":\"2222\"},{\"MMSI|key\":\"store\",\"value\":\"store information\"}]",
         "recipient" : "TRAN.HOANH.T.1231122563",
@@ -130,11 +130,23 @@ angular.module('app')
       }
     ];
     
+    setInterval(function() {
+      updateMoment();
+      $scope.$apply();
+    }, 60000);
+    
+    function updateMoment() {
+      $scope.messages.map(function( message ) {
+        message.moment = moment(message.alertDtg, 'YYYYMMDD h:mm:ss').fromNow();
+      });
+    }
+    updateMoment();
+    
     $scope.messages.forEach(function( message ) {
       message.details = message.details.replace(/\\/g,"\\\\");
     });
     $scope.messages.forEach(function( message ) {
       message.details = JSON.parse(message.details);
     });
-  
+    
   }]);

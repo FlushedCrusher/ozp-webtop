@@ -5,15 +5,15 @@
 </head>
 <body ng-controller="ctrl">
   <div class="navbar-right">
-    <div class="fixed-first-item">
-    <div class="user-alert-button-left">
-      Alerts
-      </div>
-      <div class="user-alert-button-right" ng-click="dismissAllNotifications()" alt="Dismiss All Notifications" role="button" tabindex="0">
-      Dismiss All
-      </div>
-    </div>
     <ul class="dropdown-menu alert-menu">
+      <div class="fixed-first-item">
+        <div class="user-alert-button-left">
+        Alerts
+        </div>
+        <div class="user-alert-button-right" ng-click="dismissAllNotifications()" alt="Dismiss All Notifications" role="button" tabindex="0">
+        Dismiss All
+        </div>
+      </div>
       <li class="UserNotification" ng-repeat="message in messages">
         <div>
           <button type="button" class="close pull-right" ng-click="dismissNotification(message)" alt="Dismiss Notification">
@@ -21,8 +21,9 @@
           </button>
           <h5 class="created-by">{{message.title}}</h5>
           <p class="message small">
+            {{"Name: " + message.geoAlert.flag.}}
             {{"Source: " + message.alertsource + " || Intellex Test Harness ||"}}
-            <span class="Time" style="font-style: italic">{{"Moment.js Imp"}}</span>
+            <span class="Time" style="font-style: italic">{{message.moment}}</span>
           </p>
           <div class="alert-footer">
             <div class="alert-controls">
@@ -39,7 +40,11 @@
     </ul>
   </div>
 </body>
+
+<script src="http://momentjs.com/downloads/moment.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
 <script src="app.js"></script>
 <script src="controller.js"></script>
+
 </html>

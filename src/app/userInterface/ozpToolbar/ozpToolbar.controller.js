@@ -76,20 +76,24 @@ angular.module( 'ozpWebtop.ozpToolbar')
 
     $rootScope.$on(notificationReceivedEvent, function(event, data){
       //check to see if there are any notifications
-           $scope.messages = data;
+      data.forEach(function( item ) {
+        item.message = JSON.parse(item.message);
+        item.message.geoAlert = JSON.parse(item.message.geoAlert);
+      });
+      scope.messages = data;
 
-        $scope.messageCount = $scope.messages.length;
-        $scope.thereAreUnexpiredNotifications = true;
-        //update notification tooltip
-        if($scope.messages.length === 0){
-          // no messages, switch bell icon in template
-          $scope.thereAreUnexpiredNotifications = false;
-        }else if($scope.messageCount === 1){
-          $scope.notificationTooltip = $scope.messageCount + ' new notification.';
-        }
-        else {
-          $scope.notificationTooltip = $scope.messageCount + ' new notifications.';
-        }
+      $scope.messageCount = $scope.messages.length;
+      $scope.thereAreUnexpiredNotifications = true;
+      //update notification tooltip
+      if($scope.messages.length === 0){
+        // no messages, switch bell icon in template
+        $scope.thereAreUnexpiredNotifications = false;
+      }else if($scope.messageCount === 1){
+        $scope.notificationTooltip = $scope.messageCount + ' new notification.';
+      }
+      else {
+        $scope.notificationTooltip = $scope.messageCount + ' new notifications.';
+      }
 
     });
 
@@ -122,6 +126,21 @@ angular.module( 'ozpWebtop.ozpToolbar')
       $scope.thereAreUnexpiredNotifications = false;
     };
     
+    $scope.flyToTrack = function( featureId ) {
+
+      var self = this;
+      var overlayId = 'tcri:ufs_zone';
+
+      // publish a msg on the proxy channel so the alert monitor could relay it to the map.
+      OWF.Container.Eventing.publish('map.feature.selected.proxy', JSON.stringify({
+        'featureId'   : featureId,
+        'overlayId'   : overlayId
+      }));
+      OWF.Container.Eventing.publish('map.view.center.feature.proxy', JSON.stringify({
+        'featureId'   : featureId,
+        'overlayId'   : overlayId
+      }));
+    };
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     //                           initialization
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

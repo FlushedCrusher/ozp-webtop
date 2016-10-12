@@ -9739,16 +9739,9 @@ body>div.classBanner:last-of-type {
     margin-top:20px
   }
 }
-.fixed-first-item {
-  background-color: #009dd3;
-  position: fixed;
-  right: 0;
-  top: 0;
-  height: 25px;
-  width: 320px;
-}
+
 .user-alert-button-left {
-  line-height: 20px;
+  line-height: 25px;
   font-size: 20px;
   font-weight: bold;
   margin-left: 10px;
@@ -9761,41 +9754,26 @@ body>div.classBanner:last-of-type {
   cursor: pointer;
 }
 .user-alert-button-right:hover,.user-alert-button-right:focus {
-  color: #009dd3;
+  color: lightgray;
 }
 .alert-menu {
   max-height: 300px;
   overflow: auto;
   width: 320px;
-  margin-top: 25px;
+  margin-top: 25px !important;
+  padding: 0;
 }
-.alert-menu li p {
-  width: 200px;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.alert-menu li:first-child {
+  position: fixed;
+  top: 63px;
+  z-index: 10;
+  width: 320px;
+  height: 25px;
+  background-color: #009dd3;
 }
-.alert-menu li h5 {
-  margin: 0 0 5px 0;
-}
-.alert-footer {
-  margin-bottom: 5px;
-  margin-right: 16px;
-  display: flex;
-}
-.alert-controls {
-  font-size: 11px;
-}
-.alert-controls a {
-  margin-right: 5px;
-}
-.Time {
-  position: absolute;
-  right: 10px;
-  font-size: 11px;
-  float: right;
-}
+
+.alert-menu li p {width: 200px;margin: 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}.alert-menu li h5 {margin: 0 0 5px 0;}.alert-footer {margin-bottom: 5px;margin-right: 16px;display: flex;}.alert-controls {font-size: 11px;}.alert-controls a {margin-right: 5px;}.Time {position: absolute;right: 10px;font-size: 11px;float: right;}
+
 .UserNotifications {
   padding:0;
   max-height:251px;
